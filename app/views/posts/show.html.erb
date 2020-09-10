@@ -1,0 +1,10 @@
+<div>
+	<% @post.images.each do |image| %>
+	   <%= image_tag image %>
+	<% end %>
+
+	<p>
+    <strong>Caption:</strong>
+    <%= @post.caption %>
+    </p>
+</div>

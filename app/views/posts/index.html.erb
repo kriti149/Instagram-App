@@ -1,1 +1,13 @@
-<h1>Welcome to the instagram app</h1>
+<div>
+	<% @posts.each do |post| %>
+	   <% post.images.each do |image| %>
+	      <%= image_tag image %>
+	   <% end %>
+
+	   <p>
+       <strong>Caption:</strong>
+       <%= post.caption %>
+       </p>
+
+    <% end %>
+</div>
