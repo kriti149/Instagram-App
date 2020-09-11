@@ -17,17 +17,25 @@ class PostsController < ApplicationController
 
 	def create
 		@post = Post.create(post_params)
-		redirect_to posts_path
+		if @post.save
+			redirect_to posts_path, notice: "Post successfully created!"
+		else
+			render :new
+		end
 	end
 
 	def update
-		@post.update(post_params)
+		if @post.update(post_params)
+			redirect_to posts_path, notice: "Post successfully edited!"
+		else
+			render :edit
 		redirect_to posts_path
+		end
 	end
 
 	def destroy
 		@post.destroy
-		redirect_to posts_path
+		redirect_to posts_path, notice: "Post deleted successfully!"
 	end
 
 	private

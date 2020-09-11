@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <div>
 	<% @post.images.each do |image| %>
 	   <%= image_tag image.variant(resize_to_fit: [400, 400]) %>
