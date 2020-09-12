@@ -5,25 +5,8 @@
 <strong>To create new post- "Please click here."</strong>
 <%= link_to 'New Post', new_post_path %>
 
-<div>
-	<% @posts.each do |post| %>
-
-	   <p>
-       <strong>Caption:</strong>
-       <%= post.caption %>
-       </p>
-
-	   <% post.images.each do |image| %>
-	      <%= image_tag image.variant(resize_to_fit: [400, 400]) %>
-	   <% end %>
-       
-       <p>
-	   <%= link_to 'Show', post %>
-       <%= link_to 'Edit', edit_post_path(post) %>
-       <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-       </p>
-
-    <% end %>
+<div id="posts">
+  <%=render @posts %>
 </div>
 
 <div id="infinite-scrolling">
