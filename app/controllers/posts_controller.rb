@@ -3,6 +3,10 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.paginate(page: params[:page], per_page: 2).order('created_at DESC')
+		respond_to do |format|
+			format.html
+			format.js
+    	end
 	end
 
 	def show
@@ -18,7 +22,7 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.create(post_params)
 		if @post.save
-			redirect_to posts_path, notice: "Post successfully created!"
+			redirect_to root_path, notice: "Post successfully created!"
 		else
 			render :new
 		end
@@ -26,10 +30,10 @@ class PostsController < ApplicationController
 
 	def update
 		if @post.update(post_params)
-			redirect_to posts_path, notice: "Post successfully edited!"
+			redirect_to root_path, notice: "Post successfully edited!"
 		else
 			render :edit
-		redirect_to posts_path
+		redirect_to root_path
 		end
 	end
 
